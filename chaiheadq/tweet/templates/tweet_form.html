@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+tweet
+{% endblock  %}
+
+{% block content %}
+
+<h1 class='text-center'>
+    {% if form.instance.pk %}
+    Edit Tweet
+    {% else %}
+    Create Tweet
+    {% endif %}
+</h1>
+
+<form method="post" enctype="multipart/form-data" class="form">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Upload Form</h3>
+
+                        <!-- CSRF Token -->
+                        {% csrf_token %}
+
+                        <!-- Render the text input field with margin-bottom -->
+                        <div class="form-group mb-4">
+                            <label for="id_text" class="mb-1">Enter Tweet:</label>
+                            {{ form.text }}
+                        </div>
+
+                        <!-- Render the file input field -->
+                        <div class="form-group mb-4">
+                            <label for="id_photo">Choose Photo</label>
+                            {{ form.photo }}
+                        </div>
+
+                        <!-- Button Group: Submit and Cancel buttons side by side -->
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            </div>
+                            <div class="col-6">
+                                <a href="{% url 'tweet_list' %}" class="btn btn-secondary btn-block w-100">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+{% endblock  %}

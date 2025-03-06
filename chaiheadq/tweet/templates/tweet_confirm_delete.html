@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+tweet
+{% endblock  %}
+
+{% block content %}
+<h1 class='text-center'>Delete Tweet!!</h1>
+<form method="post">
+    {% csrf_token %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+<div class="card" style="width: 18rem;padding: 0;">
+    <!-- Set a fixed height for the image and use object-fit to maintain aspect ratio -->
+    <img src="{{ tweet.photo.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+    <div class="card-body">
+        <!-- Capitalize the first letter of the username -->
+        <h5 class="card-title">{{ tweet.user.username|capfirst }}</h5>
+        <p class="card-text">{{ tweet.text }}</p><div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-danger w-100">Delete</button>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'tweet_list' %}" class="btn btn-secondary btn-block w-100">Cancel</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock  %}

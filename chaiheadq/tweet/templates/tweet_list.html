@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+tweet
+{% endblock  %}
+
+{% block content %}
+<h1 class='text-center'>Welcome to Tweet page!</h1>
+
+<a class="btn btn-primary mb-4" href={% url  'tweet_create' %}>Create a Tweet</a>
+<div class="container row gap-3">
+
+{% for tweet in tweets%}
+<div class="card" style="width: 18rem;padding: 0;">
+  <!-- Set a fixed height for the image and use object-fit to maintain aspect ratio -->
+  <img src="{{ tweet.photo.url }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+  <div class="card-body">
+      <!-- Capitalize the first letter of the username -->
+      <h5 class="card-title">{{ tweet.user.username|capfirst }}</h5>
+      <p class="card-text">{{ tweet.text }}</p>
+      <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary m-1">Edit</a>
+      <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger m-1">Delete</a>
+  </div>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock  %}
