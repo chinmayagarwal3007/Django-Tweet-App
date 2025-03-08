@@ -18,8 +18,10 @@ tweet
       <!-- Capitalize the first letter of the username -->
       <h5 class="card-title">{{ tweet.user.username|capfirst }}</h5>
       <p class="card-text">{{ tweet.text }}</p>
+      {% if  tweet.user == user%}
       <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary m-1">Edit</a>
       <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger m-1">Delete</a>
+      {% endif %}
   </div>
 </div>
 {% endfor %}
