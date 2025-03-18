@@ -1,0 +1,6 @@
+services:
+  web:
+    build: ./  # This tells Docker Compose to build the image using the Dockerfile inside the djangoLearn directory
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
